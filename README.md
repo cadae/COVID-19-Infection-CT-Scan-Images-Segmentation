@@ -17,7 +17,7 @@ A few key takeaways here:
 1. Slicing the numpy arrays to keep just the middle 60% of all CT slices as I found the start and the end of the NifTi files often have empty masks which provide little to no benefits (false positive rate is not important in this case).
 2. Rotating the numpy arrays from [height, width, index] to [index, height, width].
 3. Adding channels (extra dimension) to the arrays [index, height, width, channel].
-4. Converting grayscale to RGB since the MobileNetV2 requires as least 3 channels from the images.
+4. Converting the images from grayscale to RGB since the MobileNetV2 requires the input to have 3 channels of information.
 5. Downscaling the images' resolution to 224x224 since the MobileNetV2 only provides pre-trained weights that up to 224x224. So I figured there weren't many benefits to train the model at a higher resolution and it also reduced the computational cost while training.
 6. Replacing the left and right lungs mask value with the same value as I don't see the reasons of separating the lungs in this task. Feel free to correct me if I'm wrong. 
 7. Mask representation: 
