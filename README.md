@@ -33,7 +33,7 @@ The true mask is the “correct answer” of this particular image. As you can s
 ![Alt text](README_images/img2.png?raw=true "img")
 
 ## After 20 epochs training on 60% of the dataset:
-I didn’t use all of the datasets because my computer was running out of memory during training. I wanted to use Keras's ImageDataGenerator to dynamically feed the images to the model. However, it doesn't support NifTi format. I might circle back on this if I have time.
+I wanted to use Keras's ImageDataGenerator to dynamically feed the images to the model in order to overcome the OOM (out of memory) issue. However, the ImageDataGenerator doesn't support loading NifTi format directly from the directory. I might circle back on this if I have time.
 
 Here are a few examples of the true masks and predicted masks:
 
