@@ -10,13 +10,30 @@ The first image was extracted from one of the slices of the NifTi file which can
 
 The goal of the model is to use the first image (raw ct-scans file) as the only input and able to produce the last image which highlights the areas of patient’s lungs and the infected areas. This technique is also known as image segmentation.
 
-## This is the result before the training:
+## Pre-processing
+
+A few key takeaways here:
+
+1. Slicing the numpy arrays to keep just the middle 60% of all CT slices as I found the start and the end of the NifTi files often have empty masks which provide little to no benefits (false positive rate is not important in this case).
+2. Rotating the numpy arrays from [height, width, index] to [index, height, width].
+3. Adding channels (extra dimension) to the arrays [index, height, width, channel].
+4. Converting grayscale to RGB since the MobileNetV2 requires as least 3 channels from the images.
+5. Downscaling the images' resolution to 224x224 since the MobileNetV2 only provides pre-trained weights that up to 224x224. So I figured there weren't many benefits to train the model at a higher resolution and it also reduced the computational cost while training.
+6. Replacing the left and right lungs mask value with the same value as I don't see the reasons of separating the lungs in this task. Feel free to correct me if I'm wrong. 
+7. Mask representation: 
+   - 0: None
+   - 1: Lungs
+   - 2: Infection
+8. Downscaling the masks to same resolution as images using nearest neighbor method to retain the representaion value.
+9. Scaling each image in the dataset to have mean 0 and variance 1
+
+## Prediction result before the training:
 The true mask is the “correct answer” of this particular image. As you can see, the predicted mask is basically random guessing at this stage.
 
 ![Alt text](README_images/img2.png?raw=true "img")
 
 ## After 20 epochs training on 60% of the dataset:
-I didn’t use all of the datasets because my computer was running out of memory during training. I wanted to use Keras's ImageDataGenerator to dynamically feed the images to the model. However, it doesn't support NifTi format. I might circle back on this if I have time. I've also downscaled the images' resolution to 224x224 since the MobileNetV2 only provides pre-trained weights that up to 224x224. So I figured there weren't many benefits to train the model at a higher resolution and it also reduced the computational cost while training.
+I didn’t use all of the datasets because my computer was running out of memory during training. I wanted to use Keras's ImageDataGenerator to dynamically feed the images to the model. However, it doesn't support NifTi format. I might circle back on this if I have time.
 
 Here are a few examples of the true masks and predicted masks:
 
