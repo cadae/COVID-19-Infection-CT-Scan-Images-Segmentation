@@ -1,6 +1,6 @@
-# COVID-19-Infection-CT-Scan-images-segmentation
+# COVID-19-Infection-CT-Scan-Images-Segmentation
 
-A machine learning based approach to highlight the COVID-19 infected areas inside the patient’s lungs with the CT-scans images. It was trained on a publically available dataset on Kaggle (https://www.kaggle.com/andrewmvd/covid19-ct-scans). The base model is MobileNetV2 which is a lightweight convolutional neural network that particularly good at object segmentation and classification tasks. The reason for using CT instead of X-ray images is because CT is more reliable in terms of infection detection (source: https://www.itnonline.com/content/ct-provides-best-diagnosis-novel-coronavirus-covid-19) and thus the accuracy of the model would be higher.
+A machine learning approach to highlight the COVID-19 infected areas inside the patient’s lungs with the CT-scans images. It was trained on a publically available dataset on Kaggle (https://www.kaggle.com/andrewmvd/covid19-ct-scans). The base model is MobileNetV2 which is a lightweight convolutional neural network that particularly good at object segmentation and classification tasks. The reason for using CT instead of X-ray images is because CT is more reliable in terms of infection detection (source: https://www.itnonline.com/content/ct-provides-best-diagnosis-novel-coronavirus-covid-19) and thus the accuracy of the model would be higher.
 
 ## Take one example from the training dataset:
 
