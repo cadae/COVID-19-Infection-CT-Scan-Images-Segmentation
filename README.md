@@ -15,7 +15,7 @@ The true mask is the “correct answer” of this particular image. As you can s
 
 ![Alt text](README_images/img2.png?raw=true "img")
 
-## After 20 epochs training on 50% of the dataset:
+## After 20 epochs training on 60% of the dataset:
 I didn’t use all of the datasets because my computer was running out of memory during training. I wanted to use Keras's ImageDataGenerator to dynamically feed the images to the model. However, it doesn't support NifTi format. I might circle back on this if I have time. I've also downscaled the images' resolution to 224x224 since the MobileNetV2 only provides pre-trained weights that up to 224x224. So I figured there weren't many benefits to train the model at a higher resolution and it also reduced the computational cost while training.
 
 Here are a few examples of the true masks and predicted masks:
